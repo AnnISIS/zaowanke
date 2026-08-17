@@ -113,16 +113,6 @@ export default function Home() {
 
       <header className="hero">
         <img className="cover-art" src="/guru-rinpoche-cover.png" alt="" aria-hidden="true" />
-        <div className="cover-wash" aria-hidden="true" />
-        <div className="cover-top">
-          <span>每日修持</span>
-          <span>DAILY · 01</span>
-        </div>
-        <div className="cover-content">
-          <div className="cover-bottom">
-            <p className="subtitle">今天，只读一段也很好。</p>
-          </div>
-        </div>
       </header>
 
       <nav className="chapter-nav" aria-label="祈祷文目录">
