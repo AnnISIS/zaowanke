@@ -10,14 +10,22 @@
 }
 
 :root {
-  --paper: #d9b975;
-  --paper-light: #ead39a;
+  --paper: #ead9aa;
+  --paper-light: #f1e3bd;
   --ink: #382618;
-  --muted: #80613d;
+  --muted: #866842;
   --jade: #315d4d;
   --lotus: #a72e1f;
-  --sun: #c58b25;
-  --hairline: rgba(92, 55, 21, .18);
+  --sun: #b98228;
+  --hairline: rgba(92, 55, 21, .16);
+  --nav-bg: rgba(238, 218, 167, .88);
+  --nav-text: #684b2c;
+  --active-bg: #7b241c;
+  --active-text: #fff0c8;
+  --control-bg: rgba(57,35,19,.9);
+  --control-text: #fff;
+  --texture-line: rgba(94,55,22,.018);
+  --edge-shade: rgba(120,75,25,.055);
 }
 
 * { box-sizing: border-box; }
@@ -26,16 +34,63 @@ html { scroll-behavior: smooth; background: var(--paper); }
 body {
   margin: 0;
   color: var(--ink);
-  background:
-    radial-gradient(circle at 50% 0%, rgba(255,244,204,.46), transparent 34rem),
-    repeating-linear-gradient(0deg, rgba(94,55,22,.022) 0 1px, transparent 1px 5px),
-    linear-gradient(90deg, rgba(120,75,25,.07), transparent 12%, transparent 88%, rgba(120,75,25,.07)),
-    var(--paper);
+  background: #ead9aa;
   font-family: "KingHwa Old Song", "Noto Serif SC Variable", "Source Han Serif SC", "Songti SC", serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-synthesis: none;
   -webkit-font-smoothing: antialiased;
+}
+
+main {
+  min-height: 100vh;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 50% 8%, rgba(255,250,226,.62), transparent 38rem),
+    radial-gradient(ellipse at 18% 62%, rgba(143,83,25,.055), transparent 28rem),
+    radial-gradient(ellipse at 86% 78%, rgba(128,73,20,.045), transparent 24rem),
+    repeating-linear-gradient(0deg, var(--texture-line) 0 1px, transparent 1px 5px),
+    linear-gradient(90deg, var(--edge-shade), transparent 9%, transparent 91%, var(--edge-shade)),
+    var(--paper);
+  transition: color .35s ease, background-color .35s ease;
+}
+
+.theme-purple {
+  --paper: #3b2b42;
+  --paper-light: #55405b;
+  --ink: #f0dca7;
+  --muted: #c3aa85;
+  --jade: #c6a85b;
+  --lotus: #d29b68;
+  --sun: #d6b35d;
+  --hairline: rgba(225,194,121,.18);
+  --nav-bg: rgba(57,39,65,.9);
+  --nav-text: #ddc89b;
+  --active-bg: #b78b3e;
+  --active-text: #24182a;
+  --control-bg: rgba(25,17,29,.92);
+  --control-text: #f3dfaa;
+  --texture-line: rgba(255,225,158,.018);
+  --edge-shade: rgba(12,6,16,.2);
+}
+
+.theme-ink {
+  --paper: #181612;
+  --paper-light: #262117;
+  --ink: #e5ca83;
+  --muted: #aa9365;
+  --jade: #c8a84f;
+  --lotus: #ae4d36;
+  --sun: #ddb85d;
+  --hairline: rgba(222,184,91,.16);
+  --nav-bg: rgba(28,25,19,.92);
+  --nav-text: #cdb476;
+  --active-bg: #b78a35;
+  --active-text: #17130d;
+  --control-bg: rgba(8,8,7,.94);
+  --control-text: #e7ca80;
+  --texture-line: rgba(255,222,137,.016);
+  --edge-shade: rgba(0,0,0,.22);
 }
 
 .progress {
@@ -92,7 +147,7 @@ h2 { color: var(--ink); text-align: center; font-family: "KingHwa Old Song", "No
   margin: 0 auto 96px;
   padding: 6px;
   overflow-x: auto;
-  background: rgba(225,196,128,.84);
+  background: var(--nav-bg);
   border: 1px solid var(--hairline);
   border-radius: 999px;
   box-shadow: 0 12px 42px rgba(78,43,12,.12);
@@ -101,12 +156,12 @@ h2 { color: var(--ink); text-align: center; font-family: "KingHwa Old Song", "No
   scrollbar-width: none;
 }
 .chapter-nav::-webkit-scrollbar { display: none; }
-.chapter-nav a { flex: 0 0 auto; color: #684b2c; text-decoration: none; white-space: nowrap; padding: 10px 14px; border-radius: 999px; font-size: 13px; line-height: 1.2; transition: color .2s ease, background .2s ease; }
+.chapter-nav a { flex: 0 0 auto; color: var(--nav-text); text-decoration: none; white-space: nowrap; padding: 10px 14px; border-radius: 999px; font-size: 13px; line-height: 1.2; transition: color .2s ease, background .2s ease; }
 .chapter-nav a:active { background: rgba(53,95,75,.08); }
-.chapter-nav a.active { color: #fff0c8; background: #7b241c; }
+.chapter-nav a.active { color: var(--active-text); background: var(--active-bg); }
 
 .chapter-break { display: flex; align-items: center; gap: 18px; margin: 6em 0 4.8em; color: var(--muted); font-size: .48em; line-height: 1; letter-spacing: .3em; white-space: nowrap; }
-.chapter-break::before, .chapter-break::after { content: ""; height: 1px; flex: 1; background: linear-gradient(90deg, transparent, rgba(29,33,30,.17)); }
+.chapter-break::before, .chapter-break::after { content: ""; height: 1px; flex: 1; background: linear-gradient(90deg, transparent, var(--hairline)); }
 .chapter-break::after { transform: scaleX(-1); }
 .chapter-label { color: var(--jade); text-align: center; font-size: .48em; line-height: 1.5; letter-spacing: .28em; margin-bottom: 1.2em !important; }
 .long-prayer h2 { font-size: 1.12em; line-height: 1.55; margin-bottom: .5em; letter-spacing: .06em; }
@@ -138,8 +193,8 @@ footer p { font-size: .75em; letter-spacing: .25em; margin-top: 1.5em; }
   gap: 7px;
   width: max-content;
   padding: 6px;
-  color: #fff;
-  background: rgba(57,35,19,.9);
+  color: var(--control-text);
+  background: var(--control-bg);
   border: 1px solid rgba(255,255,255,.14);
   border-radius: 999px;
   box-shadow: 0 10px 35px rgba(48,32,20,.24);
@@ -153,6 +208,7 @@ footer p { font-size: .75em; letter-spacing: .25em; margin-top: 1.5em; }
 .reader-controls span { min-width: 27px; text-align: center; color: #c8d9cf; font-size: 12px; line-height: 1; }
 .reader-controls i { width: 1px; height: 22px; background: rgba(255,255,255,.18); margin: 0 2px; }
 .reader-controls .top-button { min-width: 70px; }
+.reader-controls .theme-button { min-width: 48px; color: #e6c575; }
 
 @media (min-width: 700px) {
   .hero { min-height: 100vh; padding-left: max(52px, 7vw); padding-right: max(52px, 7vw); }

@@ -21,6 +21,10 @@ const taraPrayer = [
   "以此祈请，无论我们身处何方，\n愿贫穷、饥馑或争端消逝无踪，\n愿佛法得以广弘。",
 ];
 
+const themes = ["gold", "purple", "ink"] as const;
+type ReaderTheme = (typeof themes)[number];
+const themeNames: Record<ReaderTheme, string> = { gold: "古金", purple: "紫金", ink: "墨金" };
+
 function PracticeText({ text }: { text: string }) {
   return text.split("\n").map((rawLine, index) => {
     const line = rawLine.trim();
@@ -45,12 +49,15 @@ export default function Home() {
   const [activeChapter, setActiveChapter] = useState("morning");
   const [practiceText, setPracticeText] = useState("");
   const [guruPractice, setGuruPractice] = useState("");
+  const [theme, setTheme] = useState<ReaderTheme>("gold");
 
   const [morningPractice, eveningPractice = ""] = practiceText.split("# 晚课");
 
   useEffect(() => {
     const saved = Number(localStorage.getItem("prayer-font-size"));
     if (saved >= 22 && saved <= 38) setFontSize(saved);
+    const savedTheme = localStorage.getItem("prayer-theme") as ReaderTheme | null;
+    if (savedTheme && themes.includes(savedTheme)) setTheme(savedTheme);
 
     fetch("/daily-practice.md")
       .then((response) => response.text())
@@ -94,8 +101,14 @@ export default function Home() {
     localStorage.setItem("prayer-font-size", String(size));
   };
 
+  const cycleTheme = () => {
+    const next = themes[(themes.indexOf(theme) + 1) % themes.length];
+    setTheme(next);
+    localStorage.setItem("prayer-theme", next);
+  };
+
   return (
-    <main>
+    <main className={`theme-${theme}`}>
       <div className="progress" style={{ width: `${progress}%` }} />
 
       <header className="hero">
@@ -207,6 +220,8 @@ export default function Home() {
         <button onClick={() => changeFontSize(fontSize - 2)} aria-label="缩小字体" disabled={fontSize <= 22}>A−</button>
         <span aria-live="polite">{fontSize}</span>
         <button onClick={() => changeFontSize(fontSize + 2)} aria-label="放大字体" disabled={fontSize >= 38}>A＋</button>
+        <i aria-hidden="true" />
+        <button className="theme-button" onClick={cycleTheme} aria-label={`切换纸色，当前为${themeNames[theme]}`}>{themeNames[theme]}</button>
         <i aria-hidden="true" />
         <button className="top-button" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} aria-label="返回顶部">↑ 顶部</button>
       </nav>
