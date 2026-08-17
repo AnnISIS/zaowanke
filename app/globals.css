@@ -2,12 +2,13 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #f7f0df;
-  --paper-deep: #eee1c6;
-  --ink: #30281f;
-  --muted: #796b59;
-  --red: #8f352f;
-  --gold: #a97b36;
+  --paper: #fbfaf7;
+  --ink: #1d211e;
+  --muted: #7a817b;
+  --jade: #355f4b;
+  --lotus: #c7aeb0;
+  --sun: #e9d9ad;
+  --hairline: rgba(29, 33, 30, .1);
 }
 
 * { box-sizing: border-box; }
@@ -16,14 +17,10 @@ html { scroll-behavior: smooth; background: var(--paper); }
 body {
   margin: 0;
   color: var(--ink);
-  background:
-    radial-gradient(circle at 50% 0%, rgba(255,255,255,.75), transparent 38rem),
-    linear-gradient(90deg, rgba(129,91,45,.035) 1px, transparent 1px),
-    var(--paper);
-  background-size: auto, 6px 6px, auto;
+  background: var(--paper);
   font-family: "Noto Serif SC Variable", "Source Han Serif SC", "Songti SC", serif;
   font-optical-sizing: auto;
-  font-weight: 430;
+  font-weight: 420;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -32,38 +29,46 @@ body {
   z-index: 20;
   top: 0;
   left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--red), #c18b3f);
-  box-shadow: 0 0 8px rgba(143,53,47,.35);
+  height: 2px;
+  background: var(--jade);
 }
 
 .hero {
-  min-height: 66vh;
-  padding: max(72px, 10vh) 24px 54px;
+  position: relative;
+  min-height: 92svh;
+  padding: max(88px, 12vh) 24px 72px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  overflow: hidden;
 }
 
-.lotus { color: var(--gold); font-size: 28px; margin-bottom: 28px; }
-.eyebrow { color: var(--red); letter-spacing: .38em; margin: 0 0 14px; font-size: 14px; font-weight: 700; }
-h1 { color: #5e201f; font-size: clamp(52px, 15vw, 76px); line-height: 1.08; letter-spacing: .08em; margin: 0; font-weight: 680; }
-.subtitle { color: var(--muted); font-size: 16px; line-height: 1.8; letter-spacing: .08em; margin: 22px 0 34px; }
-.ornament { color: var(--gold); display: flex; align-items: center; gap: 12px; font-size: 13px; }
-.ornament span { display: block; width: 50px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
-.ornament span:last-child { transform: scaleX(-1); }
+.daylight { position: absolute; top: -18vw; left: 50%; width: min(112vw, 760px); aspect-ratio: 1; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.98) 0 30%, rgba(239,221,178,.34) 58%, transparent 72%); filter: blur(2px); pointer-events: none; }
+.lotus-mark { position: relative; width: 148px; height: 82px; margin: 20px 0 48px; opacity: .78; }
+.petal { position: absolute; left: 50%; bottom: 0; width: 44px; height: 74px; border: 1px solid rgba(151,104,111,.42); border-radius: 55% 55% 48% 48% / 78% 78% 30% 30%; transform-origin: 50% 100%; }
+.petal-center { transform: translateX(-50%); background: rgba(255,255,255,.24); }
+.petal-left { transform: translateX(-58%) rotate(-34deg); }
+.petal-right { transform: translateX(-42%) rotate(34deg); }
+.petal-wide-left { height: 62px; transform: translateX(-68%) rotate(-62deg); }
+.petal-wide-right { height: 62px; transform: translateX(-32%) rotate(62deg); }
+.eyebrow { position: relative; color: var(--jade); letter-spacing: .25em; margin: 0 0 18px; font: 600 11px/1.4 system-ui, sans-serif; }
+h1 { position: relative; color: var(--ink); font-size: clamp(58px, 17vw, 92px); line-height: 1; letter-spacing: .08em; margin: 0; font-weight: 570; }
+.subtitle { position: relative; color: var(--muted); font-size: 15px; line-height: 2; letter-spacing: .05em; margin: 28px 0 42px; }
+.begin-reading { position: relative; display: inline-flex; align-items: center; gap: 18px; padding: 13px 20px; color: var(--ink); border-bottom: 1px solid rgba(29,33,30,.34); text-decoration: none; font: 500 13px/1 system-ui, sans-serif; letter-spacing: .12em; }
+.begin-reading span { color: var(--jade); font-size: 17px; }
 
-.prayer { width: min(100%, 680px); margin: 0 auto; padding: 0 25px 150px; line-height: 1.86; letter-spacing: .018em; transition: font-size .2s ease; }
+.prayer { position: relative; width: min(100%, 660px); margin: 0 auto; padding: 0 27px 160px; line-height: 1.92; letter-spacing: .025em; transition: font-size .2s ease; }
 .prayer section { scroll-margin-top: 112px; }
-h2 { color: var(--red); text-align: center; font-size: .92em; letter-spacing: .2em; margin: 0 0 2.1em; }
+h2 { color: var(--ink); text-align: center; font-size: .92em; letter-spacing: .18em; margin: 0 0 2.25em; font-weight: 560; }
 .prayer p { margin: 0 0 1.42em; text-wrap: pretty; }
 .attribution { color: var(--muted); font-size: .65em; line-height: 1.8; text-align: right; letter-spacing: .04em; }
 .attribution small { font-size: .86em; }
-.section-break { color: var(--gold); text-align: center; margin: 3.2em 0; font-size: .8em; }
+.section-break { color: var(--lotus); text-align: center; margin: 3.2em 0; font-size: .8em; }
 .verse { white-space: pre-line; }
-.invocation { color: var(--red); font-weight: 700; }
+.invocation { color: var(--jade); font-weight: 650; }
+.lotus-watermark { position: absolute; z-index: -1; top: 30vh; right: -8vw; color: rgba(53,95,75,.028); font-size: clamp(240px, 50vw, 430px); line-height: 1; writing-mode: vertical-rl; pointer-events: none; }
 
 .chapter-nav {
   position: sticky;
@@ -72,42 +77,42 @@ h2 { color: var(--red); text-align: center; font-size: .92em; letter-spacing: .2
   display: flex;
   gap: 8px;
   width: min(calc(100% - 24px), 650px);
-  margin: 0 auto 74px;
-  padding: 10px;
+  margin: 0 auto 96px;
+  padding: 6px;
   overflow-x: auto;
-  background: rgba(247,240,223,.9);
-  border: 1px solid rgba(143,53,47,.13);
-  border-radius: 18px;
-  box-shadow: 0 8px 30px rgba(74,49,27,.08);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(251,250,247,.82);
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  box-shadow: 0 12px 42px rgba(35,47,40,.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   scrollbar-width: none;
 }
 .chapter-nav::-webkit-scrollbar { display: none; }
-.chapter-nav a { flex: 0 0 auto; color: #6f5b4c; text-decoration: none; white-space: nowrap; padding: 10px 14px; border-radius: 11px; font: 600 14px/1.2 system-ui, sans-serif; transition: color .2s ease, background .2s ease; }
-.chapter-nav a:active { background: rgba(143,53,47,.1); }
-.chapter-nav a.active { color: #742b28; background: rgba(143,53,47,.09); }
+.chapter-nav a { flex: 0 0 auto; color: #737a74; text-decoration: none; white-space: nowrap; padding: 10px 14px; border-radius: 999px; font: 550 13px/1.2 system-ui, sans-serif; transition: color .2s ease, background .2s ease; }
+.chapter-nav a:active { background: rgba(53,95,75,.08); }
+.chapter-nav a.active { color: #fff; background: var(--jade); }
 
-.chapter-break { display: flex; align-items: center; gap: 18px; margin: 5em 0 4.2em; color: var(--gold); font-size: .53em; letter-spacing: .25em; white-space: nowrap; }
-.chapter-break::before, .chapter-break::after { content: ""; height: 1px; flex: 1; background: linear-gradient(90deg, transparent, rgba(169,123,54,.55)); }
+.chapter-break { display: flex; align-items: center; gap: 18px; margin: 6em 0 4.8em; color: var(--muted); font: 500 .48em/1 system-ui, sans-serif; letter-spacing: .3em; white-space: nowrap; }
+.chapter-break::before, .chapter-break::after { content: ""; height: 1px; flex: 1; background: linear-gradient(90deg, transparent, rgba(29,33,30,.17)); }
 .chapter-break::after { transform: scaleX(-1); }
-.chapter-label { color: var(--gold); text-align: center; font-size: .52em; letter-spacing: .28em; margin-bottom: 1em !important; }
+.chapter-label { color: var(--jade); text-align: center; font: 600 .48em/1.5 system-ui, sans-serif; letter-spacing: .28em; margin-bottom: 1.2em !important; }
 .long-prayer h2 { font-size: 1em; line-height: 1.55; margin-bottom: .5em; letter-spacing: .08em; }
 .byline { color: var(--muted); text-align: center; font-size: .58em; letter-spacing: .08em; margin-bottom: 3.5em !important; }
 .long-prayer .verse { white-space: pre-line; margin-bottom: 1.55em; }
 .guru-verse { white-space: normal !important; }
 .guru-verse > span { display: block; }
-.guru-verse .refrain { color: #923d35; font-weight: 560; }
+.guru-verse .refrain { color: var(--jade); font-weight: 580; }
 .guru-verse .refrain + .refrain { margin-top: .1em; }
 
-.practice-section h3 { color: #7b322e; font-size: .78em; line-height: 1.6; letter-spacing: .08em; margin: 3.2em 0 1.35em; padding-bottom: .55em; border-bottom: 1px solid rgba(169,123,54,.25); }
+.practice-section h3 { color: var(--jade); font-size: .78em; line-height: 1.6; letter-spacing: .08em; margin: 3.2em 0 1.35em; padding-bottom: .65em; border-bottom: 1px solid var(--hairline); }
 .practice-section .practice-line { margin-bottom: .62em; white-space: pre-line; }
-.practice-section .emphasized { color: #6f2f2c; font-weight: 560; }
+.practice-section .emphasized { color: var(--jade); font-weight: 580; }
 .practice-section .note { color: var(--muted); font-size: .7em; line-height: 1.7; margin: 1em 0 1.6em; }
 .practice-section .loading { color: var(--muted); text-align: center; font-size: .7em; }
 
-footer { text-align: center; padding-top: 2.8em; color: var(--red); }
-footer .ornament { justify-content: center; }
+footer { text-align: center; padding-top: 4em; color: var(--jade); }
+.closing-dot { width: 6px; height: 6px; margin: 0 auto; border-radius: 50%; background: var(--lotus); }
 footer p { font-size: .75em; letter-spacing: .25em; margin-top: 1.5em; }
 
 .reader-controls {
@@ -121,8 +126,8 @@ footer p { font-size: .75em; letter-spacing: .25em; margin-top: 1.5em; }
   gap: 7px;
   width: max-content;
   padding: 6px;
-  color: #fff9ec;
-  background: rgba(55,43,31,.86);
+  color: #fff;
+  background: rgba(29,33,30,.88);
   border: 1px solid rgba(255,255,255,.14);
   border-radius: 999px;
   box-shadow: 0 10px 35px rgba(48,32,20,.24);
@@ -133,12 +138,12 @@ footer p { font-size: .75em; letter-spacing: .25em; margin-top: 1.5em; }
 .reader-controls button { min-width: 40px; height: 38px; padding: 0 11px; color: inherit; background: transparent; border: 0; border-radius: 999px; font-size: 14px; font-weight: 700; font-family: system-ui, sans-serif; cursor: pointer; }
 .reader-controls button:active { background: rgba(255,255,255,.14); }
 .reader-controls button:disabled { opacity: .35; }
-.reader-controls span { min-width: 27px; text-align: center; color: #dfc99c; font: 12px/1 system-ui, sans-serif; }
+.reader-controls span { min-width: 27px; text-align: center; color: #c8d9cf; font: 12px/1 system-ui, sans-serif; }
 .reader-controls i { width: 1px; height: 22px; background: rgba(255,255,255,.18); margin: 0 2px; }
 .reader-controls .top-button { min-width: 70px; }
 
 @media (min-width: 700px) {
-  .hero { min-height: 72vh; }
+  .hero { min-height: 88vh; }
   .prayer { padding-left: 42px; padding-right: 42px; }
 }
 

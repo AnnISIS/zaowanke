@@ -94,11 +94,15 @@ export default function Home() {
       <div className="progress" style={{ width: `${progress}%` }} />
 
       <header className="hero">
-        <div className="lotus" aria-hidden="true">✦</div>
-        <p className="eyebrow">每日修持</p>
+        <div className="daylight" aria-hidden="true" />
+        <div className="lotus-mark" aria-hidden="true">
+          <i className="petal petal-center" /><i className="petal petal-left" /><i className="petal petal-right" />
+          <i className="petal petal-wide-left" /><i className="petal petal-wide-right" />
+        </div>
+        <p className="eyebrow">DAILY PRACTICE · 每日修持</p>
         <h1>早晚课</h1>
-        <p className="subtitle">晨起发心 · 暮时观照 · 愿一切吉祥</p>
-        <div className="ornament" aria-hidden="true"><span />◇<span /></div>
+        <p className="subtitle">晨起发心，暮时观照。<br />今天，只读一段也很好。</p>
+        <a className="begin-reading" href="#morning">开始阅读 <span aria-hidden="true">↓</span></a>
       </header>
 
       <nav className="chapter-nav" aria-label="祈祷文目录">
@@ -110,6 +114,7 @@ export default function Home() {
       </nav>
 
       <article className="prayer" style={{ fontSize: `${fontSize}px` }}>
+        <div className="lotus-watermark" aria-hidden="true">莲</div>
         <section id="morning" className="long-prayer practice-section" aria-labelledby="morning-title">
           <p className="chapter-label">原稿全文</p>
           <h2 id="morning-title">早课</h2>
@@ -176,7 +181,7 @@ export default function Home() {
         </section>
 
         <footer>
-          <div className="ornament" aria-hidden="true"><span />◇<span /></div>
+          <div className="closing-dot" aria-hidden="true" />
           <p>愿一切吉祥</p>
         </footer>
       </article>
