@@ -113,6 +113,7 @@ export default function Home() {
 
       <header className="hero">
         <img className="cover-art" src="/guru-rinpoche-full.jpg" alt="莲花生大师完整画像" />
+        <span className="cover-seal">早晚课</span>
       </header>
 
       <nav className="chapter-nav" aria-label="祈祷文目录">
