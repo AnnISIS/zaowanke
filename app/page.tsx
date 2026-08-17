@@ -119,10 +119,14 @@ export default function Home() {
           <span>DAILY · 01</span>
         </div>
         <div className="cover-content">
-          <p className="eyebrow">MORNING &amp; EVENING PRACTICE</p>
-          <h1>早晚课</h1>
-          <p className="subtitle">晨起发心，暮时观照。<br />今天，只读一段也很好。</p>
-          <a className="begin-reading" href="#morning">开始阅读 <span aria-hidden="true">↓</span></a>
+          <div className="cover-title">
+            <p className="eyebrow">每日课诵</p>
+            <h1>早晚课</h1>
+          </div>
+          <div className="cover-bottom">
+            <p className="subtitle">晨起发心，暮时观照。<br />今天，只读一段也很好。</p>
+            <a className="begin-reading" href="#morning">开始阅读 <span aria-hidden="true">↓</span></a>
+          </div>
         </div>
       </header>
 
