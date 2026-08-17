@@ -120,8 +120,7 @@ export default function Home() {
         </div>
         <div className="cover-content">
           <div className="cover-bottom">
-            <p className="subtitle">晨起发心，暮时观照。<br />今天，只读一段也很好。</p>
-            <a className="begin-reading" href="#morning">开始阅读 <span aria-hidden="true">↓</span></a>
+            <p className="subtitle">今天，只读一段也很好。</p>
           </div>
         </div>
       </header>

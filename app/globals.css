@@ -128,9 +128,7 @@ main::after {
 .cover-top span:last-child { font-size: 9px; letter-spacing: .16em; }
 .cover-content { position: absolute; z-index: 1; inset: 82px 25px max(54px, env(safe-area-inset-bottom)); pointer-events: none; }
 .cover-bottom { position: absolute; right: 0; bottom: 0; width: max-content; max-width: min(82vw, 290px); text-align: right; pointer-events: auto; }
-.subtitle { color: rgba(255,236,190,.82); font-size: 14px; line-height: 1.9; letter-spacing: .06em; margin: 0 0 24px; }
-.begin-reading { display: inline-flex; align-items: center; justify-content: flex-end; gap: 22px; min-width: 150px; padding: 14px 0; color: #fff0c8; border-bottom: 1px solid rgba(232,179,72,.62); text-decoration: none; font-size: 13px; line-height: 1; letter-spacing: .14em; }
-.begin-reading span { color: #efbc4e; font-size: 17px; }
+.subtitle { color: rgba(255,236,190,.82); font-size: 14px; line-height: 1.9; letter-spacing: .06em; margin: 0; }
 
 .prayer { position: relative; width: min(100%, 660px); margin: 0 auto; padding: 0 27px 160px; line-height: 1.92; letter-spacing: .025em; transition: font-size .2s ease; }
 .prayer section { scroll-margin-top: 112px; }
