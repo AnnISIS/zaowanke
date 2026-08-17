@@ -3,12 +3,12 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://daily-tara-prayer.shrewd-corgi-5676.chatgpt.site"),
-  title: "每日晨诵｜祈请度母 · 菩提心 · 遥呼上师",
-  description: "适合手机大字阅读的祈请度母、菩提心海之入口与遥呼上师祈请文。",
+  title: "每日早晚课｜祈请度母 · 菩提心 · 遥呼上师",
+  description: "适合手机大字阅读的个人早晚课、祈请度母、菩提心海之入口与遥呼上师祈请文。",
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
   openGraph: {
-    title: "每日晨诵",
-    description: "祈请度母 · 菩提心 · 遥呼上师",
+    title: "每日早晚课",
+    description: "早课 · 晚课 · 祈请度母 · 菩提心 · 遥呼上师",
     images: [{ url: "/og.png", width: 1536, height: 1024 }],
   },
   twitter: { card: "summary_large_image", images: ["/og.png"] },

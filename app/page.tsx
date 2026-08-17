@@ -21,22 +21,50 @@ const taraPrayer = [
   "以此祈请，无论我们身处何方，\n愿贫穷、饥馑或争端消逝无踪，\n愿佛法得以广弘。",
 ];
 
+function PracticeText({ text }: { text: string }) {
+  return text.split("\n").map((rawLine, index) => {
+    const line = rawLine.trim();
+    if (!line || line.startsWith("# ")) return null;
+    if (line.startsWith("### ")) {
+      return <h3 key={index}>{line.slice(4)}</h3>;
+    }
+    const emphasized = line.startsWith("**") && line.endsWith("**");
+    const clean = line.replace(/^\*\*/, "").replace(/\*\*$/, "").replaceAll("**", "");
+    const note = clean.startsWith("（") && clean.endsWith("）");
+    return (
+      <p className={`practice-line${emphasized ? " emphasized" : ""}${note ? " note" : ""}`} key={index}>
+        {clean}
+      </p>
+    );
+  });
+}
+
 export default function Home() {
   const [fontSize, setFontSize] = useState(26);
   const [progress, setProgress] = useState(0);
-  const [activeChapter, setActiveChapter] = useState("tara");
+  const [activeChapter, setActiveChapter] = useState("morning");
+  const [practiceText, setPracticeText] = useState("");
+
+  const [morningPractice, eveningPractice = ""] = practiceText.split("# 晚课");
 
   useEffect(() => {
     const saved = Number(localStorage.getItem("prayer-font-size"));
     if (saved >= 22 && saved <= 38) setFontSize(saved);
 
+    fetch("/daily-practice.md")
+      .then((response) => response.text())
+      .then(setPracticeText)
+      .catch(() => setPracticeText("原稿暂时无法载入，请刷新页面重试。"));
+  }, []);
+
+  useEffect(() => {
     const updateProgress = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight;
       setProgress(max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0);
     };
     updateProgress();
     window.addEventListener("scroll", updateProgress, { passive: true });
-    const sections = ["tara", "bodhicitta", "guru"]
+    const sections = ["morning", "evening", "tara", "bodhicitta", "guru"]
       .map((id) => document.getElementById(id))
       .filter((section): section is HTMLElement => Boolean(section));
     const observer = new IntersectionObserver(
@@ -53,7 +81,7 @@ export default function Home() {
       window.removeEventListener("scroll", updateProgress);
       observer.disconnect();
     };
-  }, []);
+  }, [practiceText]);
 
   const changeFontSize = (next: number) => {
     const size = Math.max(22, Math.min(38, next));
@@ -67,19 +95,37 @@ export default function Home() {
 
       <header className="hero">
         <div className="lotus" aria-hidden="true">✦</div>
-        <p className="eyebrow">每日晨诵</p>
-        <h1>祈请度母</h1>
-        <p className="subtitle">愿世界和平 · 众生安乐 · 菩提心增长</p>
+        <p className="eyebrow">每日修持</p>
+        <h1>早晚课</h1>
+        <p className="subtitle">晨起发心 · 暮时观照 · 愿一切吉祥</p>
         <div className="ornament" aria-hidden="true"><span />◇<span /></div>
       </header>
 
       <nav className="chapter-nav" aria-label="祈祷文目录">
+        <a className={activeChapter === "morning" ? "active" : ""} href="#morning">早课</a>
+        <a className={activeChapter === "evening" ? "active" : ""} href="#evening">晚课</a>
         <a className={activeChapter === "tara" ? "active" : ""} href="#tara">祈请度母</a>
         <a className={activeChapter === "bodhicitta" ? "active" : ""} href="#bodhicitta">菩提心海之入口</a>
         <a className={activeChapter === "guru" ? "active" : ""} href="#guru">遥呼上师</a>
       </nav>
 
       <article className="prayer" style={{ fontSize: `${fontSize}px` }}>
+        <section id="morning" className="long-prayer practice-section" aria-labelledby="morning-title">
+          <p className="chapter-label">原稿全文</p>
+          <h2 id="morning-title">早课</h2>
+          {practiceText ? <PracticeText text={morningPractice.replace("# 日课", "").trim()} /> : <p className="loading">正在展开早课原稿…</p>}
+        </section>
+
+        <div className="chapter-break" aria-hidden="true"><span>晚课</span></div>
+
+        <section id="evening" className="long-prayer practice-section" aria-labelledby="evening-title">
+          <p className="chapter-label">原稿全文</p>
+          <h2 id="evening-title">晚课</h2>
+          {practiceText ? <PracticeText text={eveningPractice.trim()} /> : <p className="loading">正在展开晚课原稿…</p>}
+        </section>
+
+        <div className="chapter-break" aria-hidden="true"><span>祈请度母</span></div>
+
         <section id="tara" aria-labelledby="morning-prayer">
           <h2 id="morning-prayer">祈愿文</h2>
           {firstPrayer.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
@@ -98,7 +144,7 @@ export default function Home() {
           <p className="attribution">— 宗萨钦哲仁波切<br /><small>2017年4月3日撰写</small></p>
         </section>
 
-        <div className="chapter-break" aria-hidden="true"><span>第二篇</span></div>
+        <div className="chapter-break" aria-hidden="true"><span>菩提心</span></div>
 
         <section id="bodhicitta" className="long-prayer" aria-labelledby="bodhicitta-title">
           <p className="chapter-label">修心祈愿文</p>
@@ -109,7 +155,7 @@ export default function Home() {
           ))}
         </section>
 
-        <div className="chapter-break" aria-hidden="true"><span>第三篇</span></div>
+        <div className="chapter-break" aria-hidden="true"><span>遥呼上师</span></div>
 
         <section id="guru" className="long-prayer" aria-labelledby="guru-title">
           <p className="chapter-label">简体中文版</p>
