@@ -24,6 +24,7 @@ const taraPrayer = [
 export default function Home() {
   const [fontSize, setFontSize] = useState(26);
   const [progress, setProgress] = useState(0);
+  const [activeChapter, setActiveChapter] = useState("tara");
 
   useEffect(() => {
     const saved = Number(localStorage.getItem("prayer-font-size"));
@@ -35,7 +36,23 @@ export default function Home() {
     };
     updateProgress();
     window.addEventListener("scroll", updateProgress, { passive: true });
-    return () => window.removeEventListener("scroll", updateProgress);
+    const sections = ["tara", "bodhicitta", "guru"]
+      .map((id) => document.getElementById(id))
+      .filter((section): section is HTMLElement => Boolean(section));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible?.target.id) setActiveChapter(visible.target.id);
+      },
+      { rootMargin: "-18% 0px -60% 0px", threshold: [0, 0.08, 0.2] },
+    );
+    sections.forEach((section) => observer.observe(section));
+    return () => {
+      window.removeEventListener("scroll", updateProgress);
+      observer.disconnect();
+    };
   }, []);
 
   const changeFontSize = (next: number) => {
@@ -57,9 +74,9 @@ export default function Home() {
       </header>
 
       <nav className="chapter-nav" aria-label="祈祷文目录">
-        <a href="#tara">祈请度母</a>
-        <a href="#bodhicitta">菩提心海之入口</a>
-        <a href="#guru">遥呼上师</a>
+        <a className={activeChapter === "tara" ? "active" : ""} href="#tara">祈请度母</a>
+        <a className={activeChapter === "bodhicitta" ? "active" : ""} href="#bodhicitta">菩提心海之入口</a>
+        <a className={activeChapter === "guru" ? "active" : ""} href="#guru">遥呼上师</a>
       </nav>
 
       <article className="prayer" style={{ fontSize: `${fontSize}px` }}>
@@ -99,7 +116,16 @@ export default function Home() {
           <h2 id="guru-title">虔心悲切遥呼上师祈请文</h2>
           <p className="byline">蒋贡康楚罗卓泰耶</p>
           {paragraphs(guruPrayer).map((paragraph, index) => (
-            <p className={paragraph.includes("上师鉴知我") ? "verse supplication" : "verse"} key={`guru-${index}`}>{paragraph}</p>
+            <p className="verse guru-verse" key={`guru-${index}`}>
+              {paragraph.split("\n").map((line, lineIndex) => (
+                <span
+                  className={line.includes("上师鉴知我") || line.startsWith("加持") ? "refrain" : "verse-line"}
+                  key={`${index}-${lineIndex}`}
+                >
+                  {line}
+                </span>
+              ))}
+            </p>
           ))}
         </section>
 

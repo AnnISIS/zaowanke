@@ -1,3 +1,4 @@
+@import "./noto-serif.css";
 @import "tailwindcss";
 
 :root {
@@ -20,7 +21,9 @@ body {
     linear-gradient(90deg, rgba(129,91,45,.035) 1px, transparent 1px),
     var(--paper);
   background-size: auto, 6px 6px, auto;
-  font-family: "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", serif;
+  font-family: "Noto Serif SC Variable", "Source Han Serif SC", "Songti SC", serif;
+  font-optical-sizing: auto;
+  font-weight: 430;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -46,16 +49,16 @@ body {
 
 .lotus { color: var(--gold); font-size: 28px; margin-bottom: 28px; }
 .eyebrow { color: var(--red); letter-spacing: .38em; margin: 0 0 14px; font-size: 14px; font-weight: 700; }
-h1 { color: #5e201f; font-size: clamp(52px, 15vw, 76px); line-height: 1.08; letter-spacing: .08em; margin: 0; font-weight: 700; }
+h1 { color: #5e201f; font-size: clamp(52px, 15vw, 76px); line-height: 1.08; letter-spacing: .08em; margin: 0; font-weight: 680; }
 .subtitle { color: var(--muted); font-size: 16px; line-height: 1.8; letter-spacing: .08em; margin: 22px 0 34px; }
 .ornament { color: var(--gold); display: flex; align-items: center; gap: 12px; font-size: 13px; }
 .ornament span { display: block; width: 50px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
 .ornament span:last-child { transform: scaleX(-1); }
 
-.prayer { width: min(100%, 680px); margin: 0 auto; padding: 0 25px 150px; line-height: 2; letter-spacing: .025em; transition: font-size .2s ease; }
+.prayer { width: min(100%, 680px); margin: 0 auto; padding: 0 25px 150px; line-height: 1.86; letter-spacing: .018em; transition: font-size .2s ease; }
 .prayer section { scroll-margin-top: 112px; }
 h2 { color: var(--red); text-align: center; font-size: .92em; letter-spacing: .2em; margin: 0 0 2.1em; }
-.prayer p { margin: 0 0 1.75em; text-wrap: pretty; }
+.prayer p { margin: 0 0 1.42em; text-wrap: pretty; }
 .attribution { color: var(--muted); font-size: .65em; line-height: 1.8; text-align: right; letter-spacing: .04em; }
 .attribution small { font-size: .86em; }
 .section-break { color: var(--gold); text-align: center; margin: 3.2em 0; font-size: .8em; }
@@ -81,8 +84,9 @@ h2 { color: var(--red); text-align: center; font-size: .92em; letter-spacing: .2
   scrollbar-width: none;
 }
 .chapter-nav::-webkit-scrollbar { display: none; }
-.chapter-nav a { flex: 0 0 auto; color: #682b29; text-decoration: none; white-space: nowrap; padding: 10px 14px; border-radius: 11px; font: 600 14px/1.2 system-ui, sans-serif; }
+.chapter-nav a { flex: 0 0 auto; color: #6f5b4c; text-decoration: none; white-space: nowrap; padding: 10px 14px; border-radius: 11px; font: 600 14px/1.2 system-ui, sans-serif; transition: color .2s ease, background .2s ease; }
 .chapter-nav a:active { background: rgba(143,53,47,.1); }
+.chapter-nav a.active { color: #742b28; background: rgba(143,53,47,.09); }
 
 .chapter-break { display: flex; align-items: center; gap: 18px; margin: 5em 0 4.2em; color: var(--gold); font-size: .53em; letter-spacing: .25em; white-space: nowrap; }
 .chapter-break::before, .chapter-break::after { content: ""; height: 1px; flex: 1; background: linear-gradient(90deg, transparent, rgba(169,123,54,.55)); }
@@ -90,8 +94,11 @@ h2 { color: var(--red); text-align: center; font-size: .92em; letter-spacing: .2
 .chapter-label { color: var(--gold); text-align: center; font-size: .52em; letter-spacing: .28em; margin-bottom: 1em !important; }
 .long-prayer h2 { font-size: 1em; line-height: 1.55; margin-bottom: .5em; letter-spacing: .08em; }
 .byline { color: var(--muted); text-align: center; font-size: .58em; letter-spacing: .08em; margin-bottom: 3.5em !important; }
-.long-prayer .verse { white-space: pre-line; }
-.long-prayer .supplication { color: #3b2a20; }
+.long-prayer .verse { white-space: pre-line; margin-bottom: 1.55em; }
+.guru-verse { white-space: normal !important; }
+.guru-verse > span { display: block; }
+.guru-verse .refrain { color: #923d35; font-weight: 560; }
+.guru-verse .refrain + .refrain { margin-top: .1em; }
 
 footer { text-align: center; padding-top: 2.8em; color: var(--red); }
 footer .ornament { justify-content: center; }
@@ -107,9 +114,9 @@ footer p { font-size: .75em; letter-spacing: .25em; margin-top: 1.5em; }
   align-items: center;
   gap: 7px;
   width: max-content;
-  padding: 7px;
+  padding: 6px;
   color: #fff9ec;
-  background: rgba(55,43,31,.92);
+  background: rgba(55,43,31,.86);
   border: 1px solid rgba(255,255,255,.14);
   border-radius: 999px;
   box-shadow: 0 10px 35px rgba(48,32,20,.24);
@@ -117,7 +124,7 @@ footer p { font-size: .75em; letter-spacing: .25em; margin-top: 1.5em; }
   -webkit-backdrop-filter: blur(12px);
 }
 
-.reader-controls button { min-width: 44px; height: 42px; padding: 0 12px; color: inherit; background: transparent; border: 0; border-radius: 999px; font-size: 15px; font-weight: 700; font-family: system-ui, sans-serif; cursor: pointer; }
+.reader-controls button { min-width: 40px; height: 38px; padding: 0 11px; color: inherit; background: transparent; border: 0; border-radius: 999px; font-size: 14px; font-weight: 700; font-family: system-ui, sans-serif; cursor: pointer; }
 .reader-controls button:active { background: rgba(255,255,255,.14); }
 .reader-controls button:disabled { opacity: .35; }
 .reader-controls span { min-width: 27px; text-align: center; color: #dfc99c; font: 12px/1 system-ui, sans-serif; }
