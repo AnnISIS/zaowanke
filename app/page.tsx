@@ -112,7 +112,7 @@ export default function Home() {
       <div className="progress" style={{ width: `${progress}%` }} />
 
       <header className="hero">
-        <img className="cover-art" src="/guru-rinpoche-cover.png" alt="" aria-hidden="true" />
+        <img className="cover-art" src="/guru-rinpoche-full.jpg" alt="莲花生大师完整画像" />
       </header>
 
       <nav className="chapter-nav" aria-label="祈祷文目录">
