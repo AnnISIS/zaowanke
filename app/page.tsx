@@ -99,7 +99,7 @@ export default function Home() {
       <div className="progress" style={{ width: `${progress}%` }} />
 
       <header className="hero">
-        <img className="cover-art" src="/guru-rinpoche-cover.jpg" alt="" aria-hidden="true" />
+        <img className="cover-art" src="/guru-rinpoche-cover.png" alt="" aria-hidden="true" />
         <div className="cover-wash" aria-hidden="true" />
         <div className="cover-top">
           <span>每日修持</span>

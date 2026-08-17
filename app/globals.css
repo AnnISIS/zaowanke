@@ -10,13 +10,14 @@
 }
 
 :root {
-  --paper: #fbfaf7;
-  --ink: #1d211e;
-  --muted: #7a817b;
-  --jade: #355f4b;
-  --lotus: #c7aeb0;
-  --sun: #e9d9ad;
-  --hairline: rgba(29, 33, 30, .1);
+  --paper: #d9b975;
+  --paper-light: #ead39a;
+  --ink: #382618;
+  --muted: #80613d;
+  --jade: #315d4d;
+  --lotus: #a72e1f;
+  --sun: #c58b25;
+  --hairline: rgba(92, 55, 21, .18);
 }
 
 * { box-sizing: border-box; }
@@ -25,7 +26,11 @@ html { scroll-behavior: smooth; background: var(--paper); }
 body {
   margin: 0;
   color: var(--ink);
-  background: var(--paper);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,244,204,.46), transparent 34rem),
+    repeating-linear-gradient(0deg, rgba(94,55,22,.022) 0 1px, transparent 1px 5px),
+    linear-gradient(90deg, rgba(120,75,25,.07), transparent 12%, transparent 88%, rgba(120,75,25,.07)),
+    var(--paper);
   font-family: "KingHwa Old Song", "Noto Serif SC Variable", "Source Han Serif SC", "Songti SC", serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -39,7 +44,7 @@ body {
   top: 0;
   left: 0;
   height: 2px;
-  background: var(--jade);
+  background: linear-gradient(90deg, #8b2119, #e0b04f);
 }
 
 .hero {
@@ -52,19 +57,19 @@ body {
   color: #f5edda;
   text-align: left;
   overflow: hidden;
-  background: #101c2a;
+  background: #6d451e;
 }
 
-.cover-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; filter: saturate(.78) contrast(1.04) brightness(.86); }
-.cover-wash { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,17,29,.12) 0%, rgba(8,18,29,.03) 43%, rgba(8,17,26,.56) 68%, rgba(7,15,24,.96) 100%); }
-.cover-top { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; padding-top: env(safe-area-inset-top); color: rgba(248,239,216,.8); font-size: 11px; letter-spacing: .2em; }
+.cover-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; filter: saturate(.82) contrast(1.02) brightness(.92); }
+.cover-wash { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(78,41,11,.02) 0%, rgba(69,37,12,.02) 52%, rgba(62,31,9,.58) 76%, rgba(43,22,8,.95) 100%); }
+.cover-top { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; padding-top: env(safe-area-inset-top); color: rgba(255,238,190,.88); font-size: 11px; letter-spacing: .2em; }
 .cover-top span:last-child { font-size: 9px; letter-spacing: .16em; }
 .cover-content { position: relative; z-index: 1; width: min(100%, 640px); margin: auto auto 0; padding-top: 50vh; }
-.eyebrow { color: #d9bf84; letter-spacing: .22em; margin: 0 0 14px; font-size: 10px; line-height: 1.4; }
-h1 { color: #fff8e9; font-family: "KingHwa Old Song", "Noto Serif SC Variable", serif; font-size: clamp(66px, 19vw, 108px); line-height: 1; letter-spacing: .1em; margin: 0; font-weight: 400; font-synthesis: none; text-shadow: 0 2px 28px rgba(0,0,0,.28); }
-.subtitle { color: rgba(244,237,219,.72); font-size: 14px; line-height: 1.9; letter-spacing: .06em; margin: 24px 0 30px; }
-.begin-reading { display: inline-flex; align-items: center; gap: 22px; padding: 14px 0; color: #fff7e5; border-bottom: 1px solid rgba(229,205,151,.58); text-decoration: none; font-size: 13px; line-height: 1; letter-spacing: .14em; }
-.begin-reading span { color: #d9b867; font-size: 17px; }
+.eyebrow { color: #e8bd61; letter-spacing: .22em; margin: 0 0 14px; font-size: 10px; line-height: 1.4; }
+h1 { color: #fff0c8; font-family: "KingHwa Old Song", "Noto Serif SC Variable", serif; font-size: clamp(66px, 19vw, 108px); line-height: 1; letter-spacing: .1em; margin: 0; font-weight: 400; font-synthesis: none; text-shadow: 0 2px 24px rgba(44,19,3,.5); }
+.subtitle { color: rgba(255,236,190,.78); font-size: 14px; line-height: 1.9; letter-spacing: .06em; margin: 24px 0 30px; }
+.begin-reading { display: inline-flex; align-items: center; gap: 22px; padding: 14px 0; color: #fff0c8; border-bottom: 1px solid rgba(232,179,72,.62); text-decoration: none; font-size: 13px; line-height: 1; letter-spacing: .14em; }
+.begin-reading span { color: #efbc4e; font-size: 17px; }
 
 .prayer { position: relative; width: min(100%, 660px); margin: 0 auto; padding: 0 27px 160px; line-height: 1.92; letter-spacing: .025em; transition: font-size .2s ease; }
 .prayer section { scroll-margin-top: 112px; }
@@ -75,7 +80,7 @@ h2 { color: var(--ink); text-align: center; font-family: "KingHwa Old Song", "No
 .section-break { color: var(--lotus); text-align: center; margin: 3.2em 0; font-size: .8em; }
 .verse { white-space: pre-line; }
 .invocation { color: var(--jade); font-family: "KingHwa Old Song", "Noto Serif SC Variable", serif; font-size: 1.08em; font-weight: 400; }
-.lotus-watermark { position: absolute; z-index: -1; top: 30vh; right: -8vw; color: rgba(53,95,75,.028); font-size: clamp(240px, 50vw, 430px); line-height: 1; writing-mode: vertical-rl; pointer-events: none; }
+.lotus-watermark { position: absolute; z-index: -1; top: 30vh; right: -8vw; color: rgba(106,54,15,.045); font-size: clamp(240px, 50vw, 430px); line-height: 1; writing-mode: vertical-rl; pointer-events: none; }
 
 .chapter-nav {
   position: sticky;
@@ -87,18 +92,18 @@ h2 { color: var(--ink); text-align: center; font-family: "KingHwa Old Song", "No
   margin: 0 auto 96px;
   padding: 6px;
   overflow-x: auto;
-  background: rgba(251,250,247,.82);
+  background: rgba(225,196,128,.84);
   border: 1px solid var(--hairline);
   border-radius: 999px;
-  box-shadow: 0 12px 42px rgba(35,47,40,.06);
+  box-shadow: 0 12px 42px rgba(78,43,12,.12);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   scrollbar-width: none;
 }
 .chapter-nav::-webkit-scrollbar { display: none; }
-.chapter-nav a { flex: 0 0 auto; color: #737a74; text-decoration: none; white-space: nowrap; padding: 10px 14px; border-radius: 999px; font-size: 13px; line-height: 1.2; transition: color .2s ease, background .2s ease; }
+.chapter-nav a { flex: 0 0 auto; color: #684b2c; text-decoration: none; white-space: nowrap; padding: 10px 14px; border-radius: 999px; font-size: 13px; line-height: 1.2; transition: color .2s ease, background .2s ease; }
 .chapter-nav a:active { background: rgba(53,95,75,.08); }
-.chapter-nav a.active { color: #fff; background: var(--jade); }
+.chapter-nav a.active { color: #fff0c8; background: #7b241c; }
 
 .chapter-break { display: flex; align-items: center; gap: 18px; margin: 6em 0 4.8em; color: var(--muted); font-size: .48em; line-height: 1; letter-spacing: .3em; white-space: nowrap; }
 .chapter-break::before, .chapter-break::after { content: ""; height: 1px; flex: 1; background: linear-gradient(90deg, transparent, rgba(29,33,30,.17)); }
@@ -134,7 +139,7 @@ footer p { font-size: .75em; letter-spacing: .25em; margin-top: 1.5em; }
   width: max-content;
   padding: 6px;
   color: #fff;
-  background: rgba(29,33,30,.88);
+  background: rgba(57,35,19,.9);
   border: 1px solid rgba(255,255,255,.14);
   border-radius: 999px;
   box-shadow: 0 10px 35px rgba(48,32,20,.24);
