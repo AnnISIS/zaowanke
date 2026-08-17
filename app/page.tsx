@@ -118,7 +118,7 @@ export default function Home() {
       <nav className="chapter-nav" aria-label="祈祷文目录">
         <a className={activeChapter === "morning" ? "active" : ""} href="#morning">早课</a>
         <a className={activeChapter === "padmasambhava" ? "active" : ""} href="#padmasambhava">莲师修法</a>
-        <a className={activeChapter === "bodhicitta" ? "active" : ""} href="#bodhicitta">菩提心海之入口</a>
+        <a className={activeChapter === "bodhicitta" ? "active" : ""} href="#bodhicitta">菩提心海</a>
         <a className={activeChapter === "tara" ? "active" : ""} href="#tara">祈请度母</a>
         <a className={activeChapter === "guru" ? "active" : ""} href="#guru">遥呼上师</a>
         <a className={activeChapter === "evening" ? "active" : ""} href="#evening">晚课</a>
