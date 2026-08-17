@@ -1,6 +1,14 @@
 @import "./noto-serif.css";
 @import "tailwindcss";
 
+@font-face {
+  font-family: "DongFang DaKai";
+  src: url("/fonts/alimama-dongfang-dakai.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
   --paper: #fbfaf7;
   --ink: #1d211e;
@@ -54,20 +62,20 @@ body {
 .petal-wide-left { height: 62px; transform: translateX(-68%) rotate(-62deg); }
 .petal-wide-right { height: 62px; transform: translateX(-32%) rotate(62deg); }
 .eyebrow { position: relative; color: var(--jade); letter-spacing: .25em; margin: 0 0 18px; font: 600 11px/1.4 system-ui, sans-serif; }
-h1 { position: relative; color: var(--ink); font-size: clamp(58px, 17vw, 92px); line-height: 1; letter-spacing: .08em; margin: 0; font-weight: 570; }
+h1 { position: relative; color: var(--ink); font-family: "DongFang DaKai", "Noto Serif SC Variable", serif; font-size: clamp(64px, 18vw, 100px); line-height: 1; letter-spacing: .08em; margin: 0; font-weight: 400; font-synthesis: none; }
 .subtitle { position: relative; color: var(--muted); font-size: 15px; line-height: 2; letter-spacing: .05em; margin: 28px 0 42px; }
 .begin-reading { position: relative; display: inline-flex; align-items: center; gap: 18px; padding: 13px 20px; color: var(--ink); border-bottom: 1px solid rgba(29,33,30,.34); text-decoration: none; font: 500 13px/1 system-ui, sans-serif; letter-spacing: .12em; }
 .begin-reading span { color: var(--jade); font-size: 17px; }
 
 .prayer { position: relative; width: min(100%, 660px); margin: 0 auto; padding: 0 27px 160px; line-height: 1.92; letter-spacing: .025em; transition: font-size .2s ease; }
 .prayer section { scroll-margin-top: 112px; }
-h2 { color: var(--ink); text-align: center; font-size: .92em; letter-spacing: .18em; margin: 0 0 2.25em; font-weight: 560; }
+h2 { color: var(--ink); text-align: center; font-family: "DongFang DaKai", "Noto Serif SC Variable", serif; font-size: 1.04em; letter-spacing: .12em; margin: 0 0 2.25em; font-weight: 400; font-synthesis: none; }
 .prayer p { margin: 0 0 1.42em; text-wrap: pretty; }
 .attribution { color: var(--muted); font-size: .65em; line-height: 1.8; text-align: right; letter-spacing: .04em; }
 .attribution small { font-size: .86em; }
 .section-break { color: var(--lotus); text-align: center; margin: 3.2em 0; font-size: .8em; }
 .verse { white-space: pre-line; }
-.invocation { color: var(--jade); font-weight: 650; }
+.invocation { color: var(--jade); font-family: "DongFang DaKai", "Noto Serif SC Variable", serif; font-size: 1.12em; font-weight: 400; }
 .lotus-watermark { position: absolute; z-index: -1; top: 30vh; right: -8vw; color: rgba(53,95,75,.028); font-size: clamp(240px, 50vw, 430px); line-height: 1; writing-mode: vertical-rl; pointer-events: none; }
 
 .chapter-nav {
@@ -97,7 +105,7 @@ h2 { color: var(--ink); text-align: center; font-size: .92em; letter-spacing: .1
 .chapter-break::before, .chapter-break::after { content: ""; height: 1px; flex: 1; background: linear-gradient(90deg, transparent, rgba(29,33,30,.17)); }
 .chapter-break::after { transform: scaleX(-1); }
 .chapter-label { color: var(--jade); text-align: center; font: 600 .48em/1.5 system-ui, sans-serif; letter-spacing: .28em; margin-bottom: 1.2em !important; }
-.long-prayer h2 { font-size: 1em; line-height: 1.55; margin-bottom: .5em; letter-spacing: .08em; }
+.long-prayer h2 { font-size: 1.12em; line-height: 1.55; margin-bottom: .5em; letter-spacing: .06em; }
 .byline { color: var(--muted); text-align: center; font-size: .58em; letter-spacing: .08em; margin-bottom: 3.5em !important; }
 .long-prayer .verse { white-space: pre-line; margin-bottom: 1.55em; }
 .guru-verse { white-space: normal !important; }
@@ -105,7 +113,7 @@ h2 { color: var(--ink); text-align: center; font-size: .92em; letter-spacing: .1
 .guru-verse .refrain { color: var(--jade); font-weight: 580; }
 .guru-verse .refrain + .refrain { margin-top: .1em; }
 
-.practice-section h3 { color: var(--jade); font-size: .78em; line-height: 1.6; letter-spacing: .08em; margin: 3.2em 0 1.35em; padding-bottom: .65em; border-bottom: 1px solid var(--hairline); }
+.practice-section h3 { color: var(--jade); font-family: "DongFang DaKai", "Noto Serif SC Variable", serif; font-size: .9em; line-height: 1.6; font-weight: 400; letter-spacing: .05em; margin: 3.2em 0 1.35em; padding-bottom: .65em; border-bottom: 1px solid var(--hairline); }
 .practice-section .practice-line { margin-bottom: .62em; white-space: pre-line; }
 .practice-section .emphasized { color: var(--jade); font-weight: 580; }
 .practice-section .note { color: var(--muted); font-size: .7em; line-height: 1.7; margin: 1em 0 1.6em; }
