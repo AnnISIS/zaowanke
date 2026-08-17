@@ -116,7 +116,6 @@ main::after {
 }
 
 .cover-art { display: block; width: 100%; height: auto; }
-.cover-seal { position: absolute; top: clamp(28px, 7vw, 72px); left: clamp(18px, 5vw, 56px); padding: 12px 8px 14px; color: #f3d18a; background: rgba(113, 35, 25, .84); border: 1px solid rgba(230, 181, 78, .76); box-shadow: 0 8px 24px rgba(75, 31, 10, .24); writing-mode: vertical-rl; font-size: clamp(20px, 5vw, 34px); line-height: 1; letter-spacing: .18em; }
 
 .prayer { position: relative; width: min(100%, 660px); margin: 0 auto; padding: 0 27px 160px; line-height: 1.92; letter-spacing: .025em; transition: font-size .2s ease; }
 .prayer section { scroll-margin-top: 112px; }

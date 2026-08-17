@@ -76,7 +76,7 @@ export default function Home() {
     };
     updateProgress();
     window.addEventListener("scroll", updateProgress, { passive: true });
-    const sections = ["morning", "evening", "tara", "padmasambhava", "bodhicitta", "guru"]
+    const sections = ["morning", "padmasambhava", "bodhicitta", "tara", "guru", "evening"]
       .map((id) => document.getElementById(id))
       .filter((section): section is HTMLElement => Boolean(section));
     const observer = new IntersectionObserver(
@@ -113,16 +113,15 @@ export default function Home() {
 
       <header className="hero">
         <img className="cover-art" src="/guru-rinpoche-full.jpg" alt="莲花生大师完整画像" />
-        <span className="cover-seal">早晚课</span>
       </header>
 
       <nav className="chapter-nav" aria-label="祈祷文目录">
         <a className={activeChapter === "morning" ? "active" : ""} href="#morning">早课</a>
-        <a className={activeChapter === "evening" ? "active" : ""} href="#evening">晚课</a>
-        <a className={activeChapter === "tara" ? "active" : ""} href="#tara">祈请度母</a>
         <a className={activeChapter === "padmasambhava" ? "active" : ""} href="#padmasambhava">莲师修法</a>
         <a className={activeChapter === "bodhicitta" ? "active" : ""} href="#bodhicitta">菩提心海之入口</a>
+        <a className={activeChapter === "tara" ? "active" : ""} href="#tara">祈请度母</a>
         <a className={activeChapter === "guru" ? "active" : ""} href="#guru">遥呼上师</a>
+        <a className={activeChapter === "evening" ? "active" : ""} href="#evening">晚课</a>
       </nav>
 
       <article className="prayer" style={{ fontSize: `${fontSize}px` }}>
@@ -133,12 +132,23 @@ export default function Home() {
           {practiceText ? <PracticeText text={morningPractice.replace("# 日课", "").trim()} /> : <p className="loading">正在展开早课原稿…</p>}
         </section>
 
-        <div className="chapter-break" aria-hidden="true"><span>晚课</span></div>
+        <div className="chapter-break" aria-hidden="true"><span>莲师修法</span></div>
 
-        <section id="evening" className="long-prayer practice-section" aria-labelledby="evening-title">
-          <p className="chapter-label">原稿全文</p>
-          <h2 id="evening-title">晚课</h2>
-          {practiceText ? <PracticeText text={eveningPractice.trim()} /> : <p className="loading">正在展开晚课原稿…</p>}
+        <section id="padmasambhava" className="long-prayer practice-section padma-practice" aria-labelledby="padmasambhava-title">
+          <p className="chapter-label">简约仪轨</p>
+          <h2 id="padmasambhava-title">莲师心咒修法</h2>
+          {guruPractice ? <PracticeText text={guruPractice.replace("# 莲师心咒修法简约仪轨", "").trim()} /> : <p className="loading">正在展开莲师修法…</p>}
+        </section>
+
+        <div className="chapter-break" aria-hidden="true"><span>菩提心</span></div>
+
+        <section id="bodhicitta" className="long-prayer" aria-labelledby="bodhicitta-title">
+          <p className="chapter-label">修心祈愿文</p>
+          <h2 id="bodhicitta-title">菩提心海之入口</h2>
+          <p className="byline">蒋贡康楚罗卓泰耶</p>
+          {paragraphs(bodhicittaPrayer).map((paragraph, index) => (
+            <p className="verse" key={`bodhicitta-${index}`}>{paragraph}</p>
+          ))}
         </section>
 
         <div className="chapter-break" aria-hidden="true"><span>祈请度母</span></div>
@@ -161,25 +171,6 @@ export default function Home() {
           <p className="attribution">— 宗萨钦哲仁波切<br /><small>2017年4月3日撰写</small></p>
         </section>
 
-        <div className="chapter-break" aria-hidden="true"><span>莲师修法</span></div>
-
-        <section id="padmasambhava" className="long-prayer practice-section padma-practice" aria-labelledby="padmasambhava-title">
-          <p className="chapter-label">简约仪轨</p>
-          <h2 id="padmasambhava-title">莲师心咒修法</h2>
-          {guruPractice ? <PracticeText text={guruPractice.replace("# 莲师心咒修法简约仪轨", "").trim()} /> : <p className="loading">正在展开莲师修法…</p>}
-        </section>
-
-        <div className="chapter-break" aria-hidden="true"><span>菩提心</span></div>
-
-        <section id="bodhicitta" className="long-prayer" aria-labelledby="bodhicitta-title">
-          <p className="chapter-label">修心祈愿文</p>
-          <h2 id="bodhicitta-title">菩提心海之入口</h2>
-          <p className="byline">蒋贡康楚罗卓泰耶</p>
-          {paragraphs(bodhicittaPrayer).map((paragraph, index) => (
-            <p className="verse" key={`bodhicitta-${index}`}>{paragraph}</p>
-          ))}
-        </section>
-
         <div className="chapter-break" aria-hidden="true"><span>遥呼上师</span></div>
 
         <section id="guru" className="long-prayer" aria-labelledby="guru-title">
@@ -198,6 +189,14 @@ export default function Home() {
               ))}
             </p>
           ))}
+        </section>
+
+        <div className="chapter-break" aria-hidden="true"><span>晚课</span></div>
+
+        <section id="evening" className="long-prayer practice-section" aria-labelledby="evening-title">
+          <p className="chapter-label">原稿全文</p>
+          <h2 id="evening-title">晚课</h2>
+          {practiceText ? <PracticeText text={eveningPractice.trim()} /> : <p className="loading">正在展开晚课原稿…</p>}
         </section>
 
         <footer>
