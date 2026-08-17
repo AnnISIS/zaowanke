@@ -97,9 +97,6 @@ main::after {
   z-index: 30;
   inset: 0;
   pointer-events: none;
-  background:
-    linear-gradient(90deg, transparent 14px, var(--frame-line) 14px 15px, transparent 15px 19px, var(--frame-gold) 19px 20px, transparent 20px),
-    linear-gradient(270deg, transparent 14px, var(--frame-line) 14px 15px, transparent 15px 19px, var(--frame-gold) 19px 20px, transparent 20px);
   box-shadow: inset 0 0 72px var(--page-vignette);
 }
 
