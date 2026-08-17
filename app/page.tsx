@@ -21,9 +21,9 @@ const taraPrayer = [
   "以此祈请，无论我们身处何方，\n愿贫穷、饥馑或争端消逝无踪，\n愿佛法得以广弘。",
 ];
 
-const themes = ["gold", "night"] as const;
+const themes = ["gold", "ink"] as const;
 type ReaderTheme = (typeof themes)[number];
-const themeNames: Record<ReaderTheme, string> = { gold: "古金", night: "夜色" };
+const themeNames: Record<ReaderTheme, string> = { gold: "古金", ink: "墨金" };
 
 function PracticeText({ text }: { text: string }) {
   return text.split("\n").map((rawLine, index) => {
@@ -57,7 +57,7 @@ export default function Home() {
     const saved = Number(localStorage.getItem("prayer-font-size"));
     if (saved >= 22 && saved <= 38) setFontSize(saved);
     const savedTheme = localStorage.getItem("prayer-theme");
-    if (savedTheme === "night" || savedTheme === "purple" || savedTheme === "ink") setTheme("night");
+    if (savedTheme === "night" || savedTheme === "purple" || savedTheme === "ink") setTheme("ink");
 
     fetch("/daily-practice.md")
       .then((response) => response.text())
