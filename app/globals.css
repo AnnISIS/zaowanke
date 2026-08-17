@@ -25,7 +25,11 @@
   --control-bg: rgba(57,35,19,.9);
   --control-text: #fff;
   --texture-line: rgba(94,55,22,.018);
+  --texture-fiber: rgba(102,61,23,.024);
   --edge-shade: rgba(120,75,25,.055);
+  --top-glow: rgba(255,250,226,.62);
+  --stain-one: rgba(143,83,25,.055);
+  --stain-two: rgba(128,73,20,.045);
 }
 
 * { box-sizing: border-box; }
@@ -46,51 +50,38 @@ main {
   min-height: 100vh;
   color: var(--ink);
   background:
-    radial-gradient(ellipse at 50% 8%, rgba(255,250,226,.62), transparent 38rem),
-    radial-gradient(ellipse at 18% 62%, rgba(143,83,25,.055), transparent 28rem),
-    radial-gradient(ellipse at 86% 78%, rgba(128,73,20,.045), transparent 24rem),
+    radial-gradient(ellipse at 50% 8%, var(--top-glow), transparent 38rem),
+    radial-gradient(ellipse at 18% 62%, var(--stain-one), transparent 28rem),
+    radial-gradient(ellipse at 86% 78%, var(--stain-two), transparent 24rem),
+    repeating-linear-gradient(92deg, transparent 0 7px, var(--texture-fiber) 7px 8px, transparent 8px 17px),
+    repeating-linear-gradient(4deg, transparent 0 13px, var(--texture-fiber) 13px 14px, transparent 14px 29px),
     repeating-linear-gradient(0deg, var(--texture-line) 0 1px, transparent 1px 5px),
     linear-gradient(90deg, var(--edge-shade), transparent 9%, transparent 91%, var(--edge-shade)),
     var(--paper);
   transition: color .35s ease, background-color .35s ease;
 }
 
-.theme-purple {
-  --paper: #3b2b42;
-  --paper-light: #55405b;
-  --ink: #f0dca7;
-  --muted: #c3aa85;
-  --jade: #c6a85b;
-  --lotus: #d29b68;
-  --sun: #d6b35d;
-  --hairline: rgba(225,194,121,.18);
-  --nav-bg: rgba(57,39,65,.9);
-  --nav-text: #ddc89b;
-  --active-bg: #b78b3e;
-  --active-text: #24182a;
-  --control-bg: rgba(25,17,29,.92);
-  --control-text: #f3dfaa;
-  --texture-line: rgba(255,225,158,.018);
-  --edge-shade: rgba(12,6,16,.2);
-}
-
-.theme-ink {
-  --paper: #181612;
-  --paper-light: #262117;
-  --ink: #e5ca83;
-  --muted: #aa9365;
-  --jade: #c8a84f;
-  --lotus: #ae4d36;
-  --sun: #ddb85d;
-  --hairline: rgba(222,184,91,.16);
-  --nav-bg: rgba(28,25,19,.92);
-  --nav-text: #cdb476;
-  --active-bg: #b78a35;
-  --active-text: #17130d;
-  --control-bg: rgba(8,8,7,.94);
-  --control-text: #e7ca80;
-  --texture-line: rgba(255,222,137,.016);
-  --edge-shade: rgba(0,0,0,.22);
+.theme-night {
+  --paper: #211b23;
+  --paper-light: #332a35;
+  --ink: #dfca92;
+  --muted: #ae9973;
+  --jade: #c5a452;
+  --lotus: #bd654c;
+  --sun: #d1ad55;
+  --hairline: rgba(218,181,94,.17);
+  --nav-bg: rgba(31,24,33,.91);
+  --nav-text: #c9b486;
+  --active-bg: #8f3328;
+  --active-text: #f1dca6;
+  --control-bg: rgba(11,9,12,.94);
+  --control-text: #e5ce94;
+  --texture-line: rgba(240,209,132,.014);
+  --texture-fiber: rgba(222,186,101,.018);
+  --edge-shade: rgba(0,0,0,.24);
+  --top-glow: rgba(119,87,115,.18);
+  --stain-one: rgba(117,68,49,.09);
+  --stain-two: rgba(190,146,67,.035);
 }
 
 .progress {
