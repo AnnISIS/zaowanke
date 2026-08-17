@@ -99,15 +99,18 @@ export default function Home() {
       <div className="progress" style={{ width: `${progress}%` }} />
 
       <header className="hero">
-        <div className="daylight" aria-hidden="true" />
-        <div className="lotus-mark" aria-hidden="true">
-          <i className="petal petal-center" /><i className="petal petal-left" /><i className="petal petal-right" />
-          <i className="petal petal-wide-left" /><i className="petal petal-wide-right" />
+        <img className="cover-art" src="/guru-rinpoche-cover.jpg" alt="" aria-hidden="true" />
+        <div className="cover-wash" aria-hidden="true" />
+        <div className="cover-top">
+          <span>每日修持</span>
+          <span>DAILY · 01</span>
         </div>
-        <p className="eyebrow">DAILY PRACTICE · 每日修持</p>
-        <h1>早晚课</h1>
-        <p className="subtitle">晨起发心，暮时观照。<br />今天，只读一段也很好。</p>
-        <a className="begin-reading" href="#morning">开始阅读 <span aria-hidden="true">↓</span></a>
+        <div className="cover-content">
+          <p className="eyebrow">MORNING &amp; EVENING PRACTICE</p>
+          <h1>早晚课</h1>
+          <p className="subtitle">晨起发心，暮时观照。<br />今天，只读一段也很好。</p>
+          <a className="begin-reading" href="#morning">开始阅读 <span aria-hidden="true">↓</span></a>
+        </div>
       </header>
 
       <nav className="chapter-nav" aria-label="祈祷文目录">

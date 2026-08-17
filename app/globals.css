@@ -44,29 +44,27 @@ body {
 
 .hero {
   position: relative;
-  min-height: 92svh;
-  padding: max(88px, 12vh) 24px 72px;
+  min-height: 100svh;
+  padding: 28px 25px max(54px, env(safe-area-inset-bottom));
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: space-between;
+  color: #f5edda;
+  text-align: left;
   overflow: hidden;
+  background: #101c2a;
 }
 
-.daylight { position: absolute; top: -18vw; left: 50%; width: min(112vw, 760px); aspect-ratio: 1; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.98) 0 30%, rgba(239,221,178,.34) 58%, transparent 72%); filter: blur(2px); pointer-events: none; }
-.lotus-mark { position: relative; width: 148px; height: 82px; margin: 20px 0 48px; opacity: .78; }
-.petal { position: absolute; left: 50%; bottom: 0; width: 44px; height: 74px; border: 1px solid rgba(151,104,111,.42); border-radius: 55% 55% 48% 48% / 78% 78% 30% 30%; transform-origin: 50% 100%; }
-.petal-center { transform: translateX(-50%); background: rgba(255,255,255,.24); }
-.petal-left { transform: translateX(-58%) rotate(-34deg); }
-.petal-right { transform: translateX(-42%) rotate(34deg); }
-.petal-wide-left { height: 62px; transform: translateX(-68%) rotate(-62deg); }
-.petal-wide-right { height: 62px; transform: translateX(-32%) rotate(62deg); }
-.eyebrow { position: relative; color: var(--jade); letter-spacing: .25em; margin: 0 0 18px; font-size: 11px; line-height: 1.4; }
-h1 { position: relative; color: var(--ink); font-family: "KingHwa Old Song", "Noto Serif SC Variable", serif; font-size: clamp(62px, 17vw, 96px); line-height: 1.04; letter-spacing: .1em; margin: 0; font-weight: 400; font-synthesis: none; }
-.subtitle { position: relative; color: var(--muted); font-size: 15px; line-height: 2; letter-spacing: .05em; margin: 28px 0 42px; }
-.begin-reading { position: relative; display: inline-flex; align-items: center; gap: 18px; padding: 13px 20px; color: var(--ink); border-bottom: 1px solid rgba(29,33,30,.34); text-decoration: none; font-size: 13px; line-height: 1; letter-spacing: .12em; }
-.begin-reading span { color: var(--jade); font-size: 17px; }
+.cover-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; filter: saturate(.78) contrast(1.04) brightness(.86); }
+.cover-wash { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,17,29,.12) 0%, rgba(8,18,29,.03) 43%, rgba(8,17,26,.56) 68%, rgba(7,15,24,.96) 100%); }
+.cover-top { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; padding-top: env(safe-area-inset-top); color: rgba(248,239,216,.8); font-size: 11px; letter-spacing: .2em; }
+.cover-top span:last-child { font-size: 9px; letter-spacing: .16em; }
+.cover-content { position: relative; z-index: 1; width: min(100%, 640px); margin: auto auto 0; padding-top: 50vh; }
+.eyebrow { color: #d9bf84; letter-spacing: .22em; margin: 0 0 14px; font-size: 10px; line-height: 1.4; }
+h1 { color: #fff8e9; font-family: "KingHwa Old Song", "Noto Serif SC Variable", serif; font-size: clamp(66px, 19vw, 108px); line-height: 1; letter-spacing: .1em; margin: 0; font-weight: 400; font-synthesis: none; text-shadow: 0 2px 28px rgba(0,0,0,.28); }
+.subtitle { color: rgba(244,237,219,.72); font-size: 14px; line-height: 1.9; letter-spacing: .06em; margin: 24px 0 30px; }
+.begin-reading { display: inline-flex; align-items: center; gap: 22px; padding: 14px 0; color: #fff7e5; border-bottom: 1px solid rgba(229,205,151,.58); text-decoration: none; font-size: 13px; line-height: 1; letter-spacing: .14em; }
+.begin-reading span { color: #d9b867; font-size: 17px; }
 
 .prayer { position: relative; width: min(100%, 660px); margin: 0 auto; padding: 0 27px 160px; line-height: 1.92; letter-spacing: .025em; transition: font-size .2s ease; }
 .prayer section { scroll-margin-top: 112px; }
@@ -152,7 +150,9 @@ footer p { font-size: .75em; letter-spacing: .25em; margin-top: 1.5em; }
 .reader-controls .top-button { min-width: 70px; }
 
 @media (min-width: 700px) {
-  .hero { min-height: 88vh; }
+  .hero { min-height: 100vh; padding-left: max(52px, 7vw); padding-right: max(52px, 7vw); }
+  .cover-art { object-position: 50% 27%; }
+  .cover-content { margin-left: 0; padding-top: 48vh; }
   .prayer { padding-left: 42px; padding-right: 42px; }
 }
 
