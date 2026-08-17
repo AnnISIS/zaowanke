@@ -44,6 +44,7 @@ export default function Home() {
   const [progress, setProgress] = useState(0);
   const [activeChapter, setActiveChapter] = useState("morning");
   const [practiceText, setPracticeText] = useState("");
+  const [guruPractice, setGuruPractice] = useState("");
 
   const [morningPractice, eveningPractice = ""] = practiceText.split("# 晚课");
 
@@ -55,6 +56,10 @@ export default function Home() {
       .then((response) => response.text())
       .then(setPracticeText)
       .catch(() => setPracticeText("原稿暂时无法载入，请刷新页面重试。"));
+    fetch("/guru-practice.md")
+      .then((response) => response.text())
+      .then(setGuruPractice)
+      .catch(() => setGuruPractice("莲师修法暂时无法载入，请刷新页面重试。"));
   }, []);
 
   useEffect(() => {
@@ -64,7 +69,7 @@ export default function Home() {
     };
     updateProgress();
     window.addEventListener("scroll", updateProgress, { passive: true });
-    const sections = ["morning", "evening", "tara", "bodhicitta", "guru"]
+    const sections = ["morning", "evening", "tara", "padmasambhava", "bodhicitta", "guru"]
       .map((id) => document.getElementById(id))
       .filter((section): section is HTMLElement => Boolean(section));
     const observer = new IntersectionObserver(
@@ -109,6 +114,7 @@ export default function Home() {
         <a className={activeChapter === "morning" ? "active" : ""} href="#morning">早课</a>
         <a className={activeChapter === "evening" ? "active" : ""} href="#evening">晚课</a>
         <a className={activeChapter === "tara" ? "active" : ""} href="#tara">祈请度母</a>
+        <a className={activeChapter === "padmasambhava" ? "active" : ""} href="#padmasambhava">莲师修法</a>
         <a className={activeChapter === "bodhicitta" ? "active" : ""} href="#bodhicitta">菩提心海之入口</a>
         <a className={activeChapter === "guru" ? "active" : ""} href="#guru">遥呼上师</a>
       </nav>
@@ -147,6 +153,14 @@ export default function Home() {
             </p>
           ))}
           <p className="attribution">— 宗萨钦哲仁波切<br /><small>2017年4月3日撰写</small></p>
+        </section>
+
+        <div className="chapter-break" aria-hidden="true"><span>莲师修法</span></div>
+
+        <section id="padmasambhava" className="long-prayer practice-section padma-practice" aria-labelledby="padmasambhava-title">
+          <p className="chapter-label">简约仪轨</p>
+          <h2 id="padmasambhava-title">莲师心咒修法</h2>
+          {guruPractice ? <PracticeText text={guruPractice.replace("# 莲师心咒修法简约仪轨", "").trim()} /> : <p className="loading">正在展开莲师修法…</p>}
         </section>
 
         <div className="chapter-break" aria-hidden="true"><span>菩提心</span></div>
