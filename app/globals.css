@@ -53,7 +53,7 @@ h1 { color: #5e201f; font-size: clamp(52px, 15vw, 76px); line-height: 1.08; lett
 .ornament span:last-child { transform: scaleX(-1); }
 
 .prayer { width: min(100%, 680px); margin: 0 auto; padding: 0 25px 150px; line-height: 2; letter-spacing: .025em; transition: font-size .2s ease; }
-.prayer section { scroll-margin-top: 24px; }
+.prayer section { scroll-margin-top: 112px; }
 h2 { color: var(--red); text-align: center; font-size: .92em; letter-spacing: .2em; margin: 0 0 2.1em; }
 .prayer p { margin: 0 0 1.75em; text-wrap: pretty; }
 .attribution { color: var(--muted); font-size: .65em; line-height: 1.8; text-align: right; letter-spacing: .04em; }
@@ -61,6 +61,37 @@ h2 { color: var(--red); text-align: center; font-size: .92em; letter-spacing: .2
 .section-break { color: var(--gold); text-align: center; margin: 3.2em 0; font-size: .8em; }
 .verse { white-space: pre-line; }
 .invocation { color: var(--red); font-weight: 700; }
+
+.chapter-nav {
+  position: sticky;
+  z-index: 8;
+  top: 0;
+  display: flex;
+  gap: 8px;
+  width: min(calc(100% - 24px), 650px);
+  margin: 0 auto 74px;
+  padding: 10px;
+  overflow-x: auto;
+  background: rgba(247,240,223,.9);
+  border: 1px solid rgba(143,53,47,.13);
+  border-radius: 18px;
+  box-shadow: 0 8px 30px rgba(74,49,27,.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  scrollbar-width: none;
+}
+.chapter-nav::-webkit-scrollbar { display: none; }
+.chapter-nav a { flex: 0 0 auto; color: #682b29; text-decoration: none; white-space: nowrap; padding: 10px 14px; border-radius: 11px; font: 600 14px/1.2 system-ui, sans-serif; }
+.chapter-nav a:active { background: rgba(143,53,47,.1); }
+
+.chapter-break { display: flex; align-items: center; gap: 18px; margin: 5em 0 4.2em; color: var(--gold); font-size: .53em; letter-spacing: .25em; white-space: nowrap; }
+.chapter-break::before, .chapter-break::after { content: ""; height: 1px; flex: 1; background: linear-gradient(90deg, transparent, rgba(169,123,54,.55)); }
+.chapter-break::after { transform: scaleX(-1); }
+.chapter-label { color: var(--gold); text-align: center; font-size: .52em; letter-spacing: .28em; margin-bottom: 1em !important; }
+.long-prayer h2 { font-size: 1em; line-height: 1.55; margin-bottom: .5em; letter-spacing: .08em; }
+.byline { color: var(--muted); text-align: center; font-size: .58em; letter-spacing: .08em; margin-bottom: 3.5em !important; }
+.long-prayer .verse { white-space: pre-line; }
+.long-prayer .supplication { color: #3b2a20; }
 
 footer { text-align: center; padding-top: 2.8em; color: var(--red); }
 footer .ornament { justify-content: center; }

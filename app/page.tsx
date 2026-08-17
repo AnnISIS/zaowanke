@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { bodhicittaPrayer, guruPrayer, paragraphs } from "./prayers";
 
 const firstPrayer = [
   "祈愿世界和平、和谐；祈愿中国和平、和谐。祈愿各国领袖能确实依因果定律领导自己的国家，祈愿佛法持有者、上师们都能长寿；祈愿他们免于障难；祈愿佛陀的教法长住于世。",
@@ -55,8 +56,14 @@ export default function Home() {
         <div className="ornament" aria-hidden="true"><span />◇<span /></div>
       </header>
 
+      <nav className="chapter-nav" aria-label="祈祷文目录">
+        <a href="#tara">祈请度母</a>
+        <a href="#bodhicitta">菩提心海之入口</a>
+        <a href="#guru">遥呼上师</a>
+      </nav>
+
       <article className="prayer" style={{ fontSize: `${fontSize}px` }}>
-        <section aria-labelledby="morning-prayer">
+        <section id="tara" aria-labelledby="morning-prayer">
           <h2 id="morning-prayer">祈愿文</h2>
           {firstPrayer.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           <p className="attribution">— 宗萨钦哲仁波切</p>
@@ -72,6 +79,28 @@ export default function Home() {
             </p>
           ))}
           <p className="attribution">— 宗萨钦哲仁波切<br /><small>2017年4月3日撰写</small></p>
+        </section>
+
+        <div className="chapter-break" aria-hidden="true"><span>第二篇</span></div>
+
+        <section id="bodhicitta" className="long-prayer" aria-labelledby="bodhicitta-title">
+          <p className="chapter-label">修心祈愿文</p>
+          <h2 id="bodhicitta-title">菩提心海之入口</h2>
+          <p className="byline">蒋贡康楚罗卓泰耶</p>
+          {paragraphs(bodhicittaPrayer).map((paragraph, index) => (
+            <p className="verse" key={`bodhicitta-${index}`}>{paragraph}</p>
+          ))}
+        </section>
+
+        <div className="chapter-break" aria-hidden="true"><span>第三篇</span></div>
+
+        <section id="guru" className="long-prayer" aria-labelledby="guru-title">
+          <p className="chapter-label">简体中文版</p>
+          <h2 id="guru-title">虔心悲切遥呼上师祈请文</h2>
+          <p className="byline">蒋贡康楚罗卓泰耶</p>
+          {paragraphs(guruPrayer).map((paragraph, index) => (
+            <p className={paragraph.includes("上师鉴知我") ? "verse supplication" : "verse"} key={`guru-${index}`}>{paragraph}</p>
+          ))}
         </section>
 
         <footer>
